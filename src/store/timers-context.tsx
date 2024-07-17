@@ -2,7 +2,7 @@
 
 import { createContext, ReactNode, useContext, useReducer } from "react";
 
-interface Timer {
+export interface Timer {
   name: string;
   duration: number;
 }
