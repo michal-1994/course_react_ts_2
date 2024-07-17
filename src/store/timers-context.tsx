@@ -1,6 +1,6 @@
 /** @format */
 
-import { createContext, ReactNode } from "react";
+import { createContext, ReactNode, useContext } from "react";
 
 export interface Timer {
   name: string;
@@ -19,6 +19,16 @@ export type TimersContextValue = TimersState & {
 };
 
 const TimersContext = createContext<TimersContextValue | null>(null);
+
+export const useTimersContext = () => {
+  const timersCtx = useContext(TimersContext);
+
+  if (timersCtx === null) {
+    throw new Error("TimersContext is null - that should not be the case!");
+  }
+
+  return timersCtx;
+};
 
 export interface TimersContextProviderProps {
   children: ReactNode;
